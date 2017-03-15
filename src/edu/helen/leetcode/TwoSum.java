@@ -1,31 +1,31 @@
 package edu.helen.leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TwoSum {
 
-	public TwoSum() {
-		// TODO Auto-generated constructor stub
-	}
+    public TwoSum() {
+    }
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+    public int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+        if (nums == null || nums.length == 0) {
+            return result;
+        }
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if(map.containsKey(target-nums[i])){
+                result[0]= map.get(target-nums[i]);
+                result[1] = i;
+                return result;
+            }
+            map.put(nums[i],i);
+        }
 
-	}
+        return result;
 
-	public int[] twoSum(int[] nums, int target) {
-		int[] result = null;
-		if(nums==null||nums.length==0){
-			return result;
-		}
-		for(int i=0;i<nums.length;i++){
-			for(int j=i+1;j<nums.length;j++){
-				if((nums[i]+nums[j])==target){
-					result = new int[]{i,j};
-				}
-			}
-		}
-		
-		return result;
+    }
 
-	}
 
 }

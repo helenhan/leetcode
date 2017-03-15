@@ -16,7 +16,7 @@ public class LargestRectHistogram {
 	// rectangle for item i). Then output the maximum one of Rectangle[i]
 	// (i=0..n-1).
 	public int largestRectangleArea(int[] heights) {
-		
+		return 0;
 	}
 
 }
