@@ -1,9 +1,10 @@
 package edu.helen.sort;
 
+import java.util.Arrays;
+
 public class QuickSort {
 
 	public QuickSort() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public void quickSort(int[] num) {
@@ -18,12 +19,17 @@ public class QuickSort {
 		int j = high;
 		int pivot = num[low + (high - low) / 2];
 		while (i <= j) {
-			if (num[i] < pivot) {
+			while (num[i] < pivot) {
 				i++;
 			}
-			if (num[j] > pivot) {
+			while (num[j] > pivot) {
 				j--;
 			}
+			// If we have found a values in the left list which is larger then
+			// the pivot element and if we have found a value in the right list
+			// which is smaller then the pivot element then we exchange the
+			// values.
+			// As we are done we can increase i and j
 			if (i <= j) {
 				int temp = num[i];
 				num[i] = num[j];
@@ -41,6 +47,13 @@ public class QuickSort {
 	}
 
 	public static void main(String[] args) {
+//		int a[] = { 49, 38, 65, 97, 76, 13, 27, 49, 78, 34, 12, 64, 5, 4, 62,
+//				99, 98, 54, 56, 17, 18, 23, 34, 15, 35, 25, 53, 51 };
+		int a [] = {3,4,2,5,1};
+		QuickSort sort = new QuickSort();
+		sort.quickSort(a);
+		String str = Arrays.toString(a);
+		System.out.println(str);
 	}
 
 }
