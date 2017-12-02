@@ -7,39 +7,41 @@ public class IntersectionNodeInList {
 	}
 
 	public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-		if (headA==headB||headA == null || headB == null) {
-			return headA == null ? headA : headB;
+		if(headA==null||headB==null){
+			return null;
 		}
-		ListNode result = null;
-		int aLength = getLength(headA);
-		int bLength = getLength(headB);
-
-		ListNode p1 = aLength >= bLength ? headA : headB;
-		ListNode p2 = aLength < bLength ? headA : headB;
-		int gap = Math.abs(aLength - bLength);
-		while (gap > 0) {
-			p1 = p1.next;
-			gap--;
+		int lenA =0, lenB=0;
+		ListNode iterA = headA, iterB= headB;
+		while(iterA.next!=null){
+			iterA = iterA.next;
+			lenA++;
 		}
-		while (p1 != null) {
-			if (p1 == p2) {
-				result = p1;
-				break;
+		while(iterB.next!=null){
+			iterB = iterB.next;
+			lenB++;
+		}
+		if(iterA!=iterB){
+			return null;
+		}
+		iterA = headA;
+		iterB = headB;
+		if(lenA>lenB) {
+			for (int i = 0; i < lenA - lenB; i++) {
+				iterA = iterA.next;
 			}
-			p1 = p1.next;
-			p2 = p2.next;
+		}else{
+			for (int i = 0; i < lenB - lenA; i++) {
+				iterB = iterB.next;
+			}
 		}
-		return result;
+		while(iterA!=iterB){
+			iterA = iterA.next;
+			iterB = iterB.next;
+		}
+		return iterA;
 
 	}
 
-	private int getLength(ListNode head) {
-		int size = 0;
-		while (head != null) {
-			head = head.next;
-			size++;
-		}
-		return size;
-	}
+
 
 }

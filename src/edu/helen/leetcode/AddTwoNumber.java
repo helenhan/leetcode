@@ -1,5 +1,7 @@
 package edu.helen.leetcode;
 
+import java.util.List;
+
 public class AddTwoNumber {
 
     public AddTwoNumber() {
@@ -11,64 +13,25 @@ public class AddTwoNumber {
 
     }
 
-
-
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-
-        ListNode res = new ListNode(0);
-        if (l1 == null || l2 == null) {
-            return l1 == null ? l2 : l1;
-        }
-        ListNode head1 = res;
+        ListNode head = new ListNode(0);
+        ListNode p = l1, q=l2,curr = head;
         int carry = 0;
-        while (l1 != null && l2 != null) {
-            int temp = l1.val + l2.val + carry;
-            if (temp >= 10) {
-                temp = temp % 10;
-                carry = 1;
-            } else {
-                carry = 0;
-            }
-            ListNode node = new ListNode(temp);
-            res.next = node;
-            res = res.next;
-            l1 = l1.next;
-            l2 = l2.next;
+        while(p!=null|| q!=null){
+            int value1 = (p!=null)? p.val:0;
+            int value2 =(q!=null)?q.val:0;
+            int sum = value1 + value2 + carry;
+            carry = sum/10;
+            curr.next = new ListNode(sum%10);
+            curr = curr.next;
+            if(p!=null)p=p.next;
+            if(q!=null)q=q.next;
         }
-        if (l1 == null && l2 == null) {
-            if (carry == 1) {
-                ListNode one = new ListNode(1);
-                res.next = one;
-            }
-            return head1.next;
+        if(carry>0){
+            ListNode tail = new ListNode(carry);
+            curr.next = tail;
         }
-        ListNode tail = l1 == null ? l2 : l1;
-        ListNode head2 = tail;
-        if (carry == 1) {
-            while (carry == 1 && tail != null) {
-                int temp = tail.val + 1;
-                if (temp >= 10) {
-                    temp = temp % 10;
-                    carry = 1;
-                } else {
-                    carry = 0;
-                }
-                ListNode node = new ListNode(temp);
-                res.next = node;
-                res = res.next;
-                tail = tail.next;
-            }
-            if(carry==1){
-                ListNode node = new ListNode(1);
-                res.next = node;
-            }else{
-                res.next = tail;
-            }
-        } else {
-            res.next = tail;
-        }
-        return head1.next;
-
+        return head.next;
     }
 
 }

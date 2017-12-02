@@ -1,6 +1,10 @@
 package edu.helen.leetcode;
 
+import com.sun.media.sound.DLSInfo;
+
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
 
 /**
  * Created by Helen on 2/6/2017.
@@ -113,5 +117,76 @@ public class LRUCache {
 //
 //    }
 
+    class DLinkNode{
+        int key;
+        int value;
+        DLinkNode pre;
+        DLinkNode next;
+        DLinkNode(int key, int value){
+            this.key =key;
+            this.value = value;
+        }
+    }
+
+    void addNode(DLinkNode node){
+        node.next = head.next;
+        head.next.pre = node;
+        node.pre = head;
+        head.next = node;
+    }
+    void removeNode(DLinkNode node){
+        node.pre.next = node.next;
+        node.next.pre = node.pre;
+    }
+    void moveNode2Head(DLinkNode node){
+        removeNode(node);
+        addNode(node);
+    }
+    void popTail(){
+        map.remove(tail.pre.key);
+        removeNode(tail.pre);
+    }
+    Map<Integer,DLinkNode> map = new HashMap<>();
+    int capacity;
+    DLinkNode head;
+    DLinkNode tail;
+    int count = 0;
+    public LRUCache(int capacity){
+        this.capacity = capacity;
+        head = new DLinkNode(0,0);
+        tail = new DLinkNode(0,0);
+        head.next = tail;
+        tail.pre = head;
+        head.pre = null;
+        tail.next = null;
+        count = 0;
+    }
+
+    public int get(int key) {
+        if(map.get(key)!=null){
+            DLinkNode node = map.get(key);
+            moveNode2Head(node);
+            return node.value;
+        }
+        return -1;
+    }
+
+    public void put(int key, int value) {
+        if(map.get(key)!=null){
+            DLinkNode node = map.get(key);
+            node.value = value;
+            moveNode2Head(node);
+        }else{
+            DLinkNode newnode = new DLinkNode(key,value);
+            map.put(key,newnode);
+            addNode(newnode);
+            ++count;
+            if(count>capacity){
+                popTail();
+                --count;
+            }
+
+        }
+    }
 
 }

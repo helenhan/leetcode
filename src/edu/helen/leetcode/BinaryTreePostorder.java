@@ -1,22 +1,8 @@
 package edu.helen.leetcode;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTreePostorder {
-
-	public BinaryTreePostorder() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 	// time exceed
 	public List<Integer> postorderTraversal(TreeNode root) {
 		List<Integer> list = new LinkedList<Integer>();
@@ -75,6 +61,25 @@ public class BinaryTreePostorder {
 
 		}
 		return list;
+	}
+
+	public static void main(String[] args) {
+		BinaryTreePostorder v = new BinaryTreePostorder();
+		TreeNode root = new TreeNode(1);
+		TreeNode two = new TreeNode(2);
+		TreeNode three = new TreeNode(3);
+		TreeNode four = new TreeNode(4);
+		TreeNode five = new TreeNode(5);
+		TreeNode six = new TreeNode(6);
+		root.left = two;
+		root.right=three;
+		two.left = four;
+		two.right=five;
+		three.right = six;
+
+		List list = v.postorderTraversal2(root);
+		System.out.println(Arrays.toString(list.toArray()));
+
 	}
 
 }

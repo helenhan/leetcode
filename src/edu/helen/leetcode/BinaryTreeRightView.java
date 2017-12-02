@@ -16,8 +16,8 @@ public class BinaryTreeRightView {
 	    if (root == null) return res;
 	    Queue<TreeNode>queue = new LinkedList<TreeNode>();
 
-	    queue.offer(root);      
-	    while (!queue.isEmpty()) {//Level by level BFS 
+	    queue.offer(root);
+	    while (!queue.isEmpty()) {//Level by level BFS
 	        int count = queue.size();
 	        for (int i = 0; i < count; i++) {
 	            TreeNode node = queue.poll();
@@ -31,6 +31,7 @@ public class BinaryTreeRightView {
 	    }
 	    return res;
 	}
+
 
 	// dfs
 	public List<Integer> rightSideView2(TreeNode root) {

@@ -2,6 +2,7 @@ package edu.helen.leetcode;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Stack;
 
 public class ValidParentheses {
 
@@ -10,50 +11,16 @@ public class ValidParentheses {
 	}
 
 	public boolean isValid(String s) {
-		if (s == null || s.length() == 0) {
-			return false;
+		Stack<Character> stack = new Stack<>();
+		for(char c:s.toCharArray()){
+			if(c=='(') stack.push(')');
+			else if(c=='[') stack.push(']');
+			else if(c=='{') stack.push('}');
+			else if(stack.empty()||stack.pop()!=c) return false;
 		}
-		Deque<Character> stack = new ArrayDeque<>();
-		if ((s.length() % 2) != 0) {
-			return false;
-		}
-		for (int i = 0; i < s.length(); i++) {
-			char c = s.charAt(i);
-			switch (c) {
-			case '(':
-			case '[':
-			case '{':
-				stack.push(c);
-				break;
-			case ')':
-				if (stack.isEmpty()) {
-					return false;
-				} else if (stack.pop() != '(') {
-					return false;
-				}
-				break;
-			case ']':
-				if (stack.isEmpty()) {
-					return false;
-				} else if (stack.pop() != '[') {
-					return false;
-				}
-				break;
-			case '}':
-				if (stack.isEmpty()) {
-					return false;
-				} else if (stack.pop() != '{') {
-					return false;
-				}
-				break;
-			}
-
-		}
-
-		if (stack.size() != 0) {
-			return false;
-		}
-		return true;
+		return stack.empty();
 	}
+
+
 
 }

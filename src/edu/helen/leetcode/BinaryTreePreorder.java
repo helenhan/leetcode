@@ -1,11 +1,6 @@
 package edu.helen.leetcode;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTreePreorder {
 
@@ -13,10 +8,6 @@ public class BinaryTreePreorder {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 	public List<Integer> preorderTraversal(TreeNode root) {
 		List<Integer> list = new LinkedList<Integer>();
@@ -58,5 +49,43 @@ public class BinaryTreePreorder {
 	    }
 	    return result;
 	}
+
+	public List<Integer> preorderTraversal3(TreeNode root) {
+		List<Integer> result = new ArrayList<>();
+		if(root==null){
+			return result;
+		}
+		Stack<TreeNode> stack = new Stack<>();
+		while(root!=null||!stack.empty()){
+			while(root!=null){
+				result.add(root.val);
+				stack.push(root);
+				root = root.left;
+			}
+			root = stack.pop();
+			root = root.right;
+		}
+		return result;
+	}
+
+	public static void main(String[] args) {
+		BinaryTreePreorder v = new BinaryTreePreorder();
+		TreeNode root = new TreeNode(1);
+		TreeNode two = new TreeNode(2);
+		TreeNode three = new TreeNode(3);
+		TreeNode four = new TreeNode(4);
+		TreeNode five = new TreeNode(5);
+		TreeNode six = new TreeNode(6);
+		root.left = two;
+		root.right=three;
+		two.left = four;
+		two.right=five;
+		three.right = six;
+
+		List list = v.preorderTraversal3(root);
+		System.out.println(Arrays.toString(list.toArray()));
+
+	}
+
 
 }
