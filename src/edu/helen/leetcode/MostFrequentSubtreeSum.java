@@ -30,7 +30,7 @@ public class MostFrequentSubtreeSum {
         return result;
     }
 
-    private int postOrder(TreeNode root) {
+    private int postOrder(TreeNode root) {  // must be post-order since only after we know both subtrees' sum, then we can get sum of the root node.
         if (root == null) return 0;
         int left = postOrder(root.left);
         int right = postOrder(root.right);
@@ -40,4 +40,5 @@ public class MostFrequentSubtreeSum {
         maxcount = Math.max(maxcount, count);
         return sum;
     }
+
 }

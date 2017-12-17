@@ -1,14 +1,8 @@
 package edu.helen.leetcode;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.Stack;
 
 public class ValidParentheses {
-
-	public ValidParentheses() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public boolean isValid(String s) {
 		Stack<Character> stack = new Stack<>();
@@ -16,7 +10,7 @@ public class ValidParentheses {
 			if(c=='(') stack.push(')');
 			else if(c=='[') stack.push(']');
 			else if(c=='{') stack.push('}');
-			else if(stack.empty()||stack.pop()!=c) return false;
+			else if(stack.empty()||stack.pop()!=c) return false; //do not forget to check stack.empty()
 		}
 		return stack.empty();
 	}

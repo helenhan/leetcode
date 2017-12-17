@@ -7,10 +7,6 @@ import java.util.Queue;
 
 public class BinaryLevelOrder {
 
-    public BinaryLevelOrder() {
-        // TODO Auto-generated constructor stub
-    }
-
     // bfs
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
@@ -45,31 +41,17 @@ public class BinaryLevelOrder {
 
     }
 
-    public void dfs(TreeNode node, List<List<Integer>> list, int deep) {
+    public void dfs(TreeNode node, List<List<Integer>> list, int height) {
         if (node == null) {
             return;
         }
-        if (list.size() == deep) {
-            List<Integer> temp = new ArrayList<Integer>();
-            list.add(temp);
-        }
-        list.get(deep).add(node.val);
-        dfs(node.left, list, deep + 1);
-        dfs(node.right, list, deep + 1);
-    }
-
-    public void dfs2(TreeNode node,List<List<Integer>> list, int height){
-        if(node==null){
-            return;
-        }
-        if(list.size()==height){
+        if (list.size() == height) { //it says we could do next level, last level is done.
             list.add(new ArrayList<>());
         }
         list.get(height).add(node.val);
-        dfs2(node.left,list,height+1);
-        dfs2(node.right,list,height+1);
+        dfs(node.left, list, height + 1);
+        dfs(node.right, list, height + 1);
     }
-
 
 
 }

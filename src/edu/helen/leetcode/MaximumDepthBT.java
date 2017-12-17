@@ -21,7 +21,7 @@ public class MaximumDepthBT {
 		}
 		if(root.left!=null&&root.right!=null){
 			return Math.min(minDepth(root.left), minDepth(root.right))+1;
-		}else{
+		}else{ //if one child node is null, just need to calculate depth of the other side sub tree
 			return Math.max(minDepth(root.left), minDepth(root.right))+1;
 		}
 	}

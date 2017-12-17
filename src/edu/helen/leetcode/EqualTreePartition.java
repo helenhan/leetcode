@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Given a binary tree with n nodes, your task is to check if it's possible to partition the tree to two trees which have the equal sum of values after removing exactly one edge on the original tree.
+ * Given a binary tree with n nodes, your task is to check if it's possible to partition the tree to two trees
+ * which have the equal sum of values after removing exactly one edge on the original tree.
  * Example 1:
  * Input:
  * 5
@@ -37,6 +38,7 @@ import java.util.Map;
  * <p>
  * Output: False
  * Explanation: You can't split the tree into two trees with equal sum after removing exactly one edge on the tree.
+ * https://discuss.leetcode.com/topic/100179/java-c-simple-solution-with-only-one-hashmap
  * http://www.cnblogs.com/grandyang/p/7550360.html
  * 这道题让我们划分等价树，就是说当移除一条边后，被分成的两棵树的结点之和需要相等。那么通过观察题目中的例子我们可以发现，
  * 如果我们将每个结点的结点值变成其所有子结点的结点值之和再加上当前的结点值，那么对于例子1来说，根结点的结点值就变成了30，
@@ -48,12 +50,10 @@ import java.util.Map;
  * Created by Helen on 11/24/2017.
  */
 public class EqualTreePartition {
-    Map<Integer, Integer> map = new HashMap<>();
-
-    public boolean checkEqualTree(TreeNode root ) {
+    public boolean checkEqualTree(TreeNode root) {
         if (root == null) return true;
         Map<Integer, Integer> map = new HashMap<>();
-        int sum = sum(root,map);
+        int sum = sum(root, map);
         if (sum == 0) {
             if (map.get(0) > 1) {
                 return true;
@@ -66,10 +66,14 @@ public class EqualTreePartition {
         }
     }
 
-    public int sum(TreeNode root,Map<Integer, Integer> map) {
+    public int sum(TreeNode root, Map<Integer, Integer> map) {
         if (root == null) return 0;
-        int value = root.val + sum(root.left,map) + sum(root.right,map);
+        int value = root.val + sum(root.left, map) + sum(root.right, map);
         map.put(value, map.getOrDefault(value, 0) + 1);
         return value;
+    }
+
+    public static void main(String[] args) {
+
     }
 }

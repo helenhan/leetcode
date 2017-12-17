@@ -15,7 +15,7 @@ public class ConstructStringFromBT {
         } else if (left.equals("")) {
             return value + "()" + "(" + right + ")";
         } else if (right.equals("")) {
-            return value + "(" + left + ")" ;
+            return value + "(" + left + ")";
         } else {
             return value + "(" + left + ")" + "(" + right + ")";
         }
