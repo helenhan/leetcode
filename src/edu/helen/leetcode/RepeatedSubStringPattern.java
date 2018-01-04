@@ -10,16 +10,16 @@ package edu.helen.leetcode;
 public class RepeatedSubStringPattern {
     public boolean repeatedSubstringPattern(String s) {
         int len = s.length();
-        for (int i = len / 2; i >= 1; i--) {
+        for (int i = len / 2; i >= 1; i--) { //Note i>=1
             if (len % i == 0) {
-                int m = len/i;
-                String subStr = s.substring(0,i);
+                int m = len / i;
+                String subStr = s.substring(0, i);
                 StringBuilder builder = new StringBuilder();
-                for(int j=0;j<m;j++){
+                for (int j = 0; j < m; j++) {
                     builder.append(subStr);
 
                 }
-                if(builder.toString().equals(s)){
+                if (builder.toString().equals(s)) {
                     return true;
                 }
             }

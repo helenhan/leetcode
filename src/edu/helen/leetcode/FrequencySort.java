@@ -1,9 +1,6 @@
 package edu.helen.leetcode;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * https://discuss.leetcode.com/topic/65947/o-n-easy-to-understand-java-solution/2
@@ -31,11 +28,11 @@ public class FrequencySort {
             }
         }
         StringBuilder builder = new StringBuilder();
-        while(tree.size()>0){
+        while(tree.size()>0){ // note: need to use while loop, since we need to get "key" by descending order
             Map.Entry<Integer,List<Character>> entry = tree.pollLastEntry();
             //for each character with the same occurrence, so it doesn't matter they have the same key
             for(Character ch:entry.getValue()) {
-                builder.append(new String(new char[entry.getKey()]).replace('\0',ch));
+                builder.append(new String(new char[entry.getKey()]).replace('\0',ch)); //'\0' is initial default value for char type
             }
         }
         return builder.toString();

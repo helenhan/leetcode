@@ -34,7 +34,7 @@ public class MaxRotateFunction {
             sum += A[i];
             t = t + i*A[i];
         }
-        int res = t;
+        int res = t; // assign the F(0) to res
         for(int i=1;i<n;i++){
             t = t +sum - n*A[n-i];
             res = Math.max(res,t);

@@ -3,6 +3,7 @@ package edu.helen.leetcode;
 import java.util.*;
 
 /**
+ * use the last one in list to replace the one which is removed and delete last one in the list;
  * Created by Helen on 10/18/2017.
  */
 public class RandomizedSet {
@@ -35,7 +36,7 @@ public class RandomizedSet {
         if(loc<list.size()-1){
             int lastone = list.get(list.size()-1);
             list.set(loc,lastone);
-            map.put(lastone,loc);
+            map.put(lastone,loc); // do not forget to update location data in map
         }
         map.remove(val);
         list.remove(list.size()-1);
@@ -46,4 +47,5 @@ public class RandomizedSet {
     public int getRandom() {
         return list.get(random.nextInt(list.size()));
     }
+
 }

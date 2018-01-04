@@ -16,7 +16,7 @@ public class ValidAnagram {
         char[] ta = t.toCharArray();
         Arrays.sort(sa);
         Arrays.sort(ta);
-        if(!sa.equals(ta)){
+        if(!sa.equals(ta)){ //use equals to compare two arrays.
             return false;
         }else {
             return true;
@@ -29,8 +29,8 @@ public class ValidAnagram {
         }
         int[]  counter = new int[26];
         for(int i=0;i<s.length();i++){
-            counter[s.charAt(i)-'a']++;
-            counter[t.charAt(i)-'a']--;
+            counter[s.charAt(i)-'a']++; //increment for s
+            counter[t.charAt(i)-'a']--; // decrement for t
         }
         for(int count:counter){
             if(count!=0){
@@ -39,4 +39,5 @@ public class ValidAnagram {
         }
         return true;
     }
+
 }

@@ -28,8 +28,8 @@ public class MineSweeper {
                         if (i == 0 && j == 0) continue;
                         int x = row + i, y = col + j;
                         if (x < 0 || x >= n || y < 0 || y >= m) continue;
-                        if (board[x][y] == 'E'){
-                            updateBoard(board,new int[]{x,y});
+                        if (board[x][y] == 'E') {
+                            updateBoard(board, new int[]{x, y});
                         }
                     }
                 }

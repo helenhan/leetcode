@@ -2,23 +2,22 @@ package edu.helen.leetcode;
 
 public class PalindromeList {
 
-    public PalindromeList() {
-        // TODO Auto-generated constructor stub
-    }
-
     public boolean isPalindrome(ListNode head) {
+        if(head==null||head.next==null){
+            return true;
+        }
         ListNode fast = head;
         ListNode slow = head;
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
         }
-        if (fast != null) {
+        if (fast != null) { // odd
             slow = slow.next;
         }
         slow = reverse(slow);
         fast = head;
-        while (slow!= null) {
+        while (slow!= null) { // not need check fast and slow both, since they are the same length
             if (fast.val != slow.val) {
                 return false;
             }
@@ -40,4 +39,5 @@ public class PalindromeList {
         }
         return prev;
     }
+    
 }

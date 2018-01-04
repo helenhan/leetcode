@@ -11,7 +11,7 @@ public class TwoSumII {
         while(left<right){
             int tmp = numbers[left]+numbers[right];
             if(numbers[left]+numbers[right]==target){
-                res[0] = left+1;
+                res[0] = left+1; // indices are not zero-based
                 res[1] = right+1;
                 return res;
             }else if(tmp<target){
@@ -22,4 +22,6 @@ public class TwoSumII {
         }
         return res;
     }
+
+
 }
