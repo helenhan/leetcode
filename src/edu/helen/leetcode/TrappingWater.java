@@ -2,10 +2,10 @@ package edu.helen.leetcode;
 
 /**
  * https://leetcode.com/problems/trapping-rain-water/solution/
- * Find maximum height of bar from the left end upto an index i in the array left_maxleft_max.
- * Find maximum height of bar from the right end upto an index i in the array right_maxright_max.
- * Iterate over the \text{height}height array and update ans:
- * Add min(max_left[i],max_right[i])−height[i] to ansans
+ * Find maximum height of bar from the left end upto an index i in the array left_max.
+ * Find maximum height of bar from the right end upto an index i in the array right_max.
+ * Iterate over the height array and update ans:
+ * Add min(max_left[i],max_right[i])−height[i] to ans
  * Created by Helen on 9/21/2017.
  */
 public class TrappingWater {

@@ -31,7 +31,7 @@ public class CutTreeOfGolfEvent {
         int sum = 0;
         while (!queue.isEmpty()) {
             int[] tree = queue.poll();
-            int step = getMinStep(forest, start, tree, m, n);
+            int step = getMinStep(forest, start, tree, m, n);//from start to tree
             if (step < 0) return -1;
             sum += step;
             start[0] = tree[0];
@@ -60,8 +60,10 @@ public class CutTreeOfGolfEvent {
                     visited[x][y] = true;
                 }
             }
-            steps++;
+            steps++; // notice that queue stores every possible step.
         }
         return -1;
     }
+
+
 }

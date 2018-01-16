@@ -1,10 +1,11 @@
 package edu.helen.leetcode;
 
-        import java.util.ArrayList;
-        import java.util.LinkedList;
-        import java.util.List;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
+ * This is a iterative solution. For each digit added, remove and copy every element in the queue and add the possible letter to each element,
+ * then add the updated elements back into queue again. Repeat this procedure until all the digits are iterated.
  * 当已经获得digits[0:i-1]的所有letter combinations以后，加入digits[i]后新combinations为加入每个可能对应的字母加到之前的解集中。
  * time complexity O(n^2)
  * Created by Helen on 9/18/2017.
@@ -28,6 +29,5 @@ public class LetterCombinationPhoneNumber {
         }
         return list;
     }
-
 
 }

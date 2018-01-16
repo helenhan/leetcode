@@ -2,6 +2,7 @@ package edu.helen.leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public class ThreeSum {
         Arrays.sort(nums);
         if (nums == null || nums.length < 3) return res;
         for (int i = 0; i < nums.length - 2; i++) { //We just need to end at the third number from last since we need to get triplets, 3 numbers.
-            if (nums[i] > 0)
+            if (nums[i] > 0) //in for loop.
                 break; //because this is ordered array now, so if num[i] <0, the numbers behind it must bigger than zero, the sum of them could not be ZERO.
             if (i > 0 && nums[i] == nums[i - 1]) continue; //only remove processed duplicate number here
             int low = i + 1, high = nums.length - 1;
@@ -30,7 +31,7 @@ public class ThreeSum {
             while (low < high) {
                 if (nums[low] + nums[high] == sum) {
                     res.add(Arrays.asList(nums[i], nums[low], nums[high]));
-                    while (low < high && nums[low] == nums[low + 1])
+                    while (low < high && nums[low] == nums[low + 1]) //only when (nums[low] + nums[high] == sum), we need to remove duplicate numbers.
                         low++; // ALWAYS check low< high! we must remove duplicate numbers here to avoid add duplicate triplets in the result list
                     while (low < high && nums[high] == nums[high - 1])
                         high--; // Others(low+high !=sum) they will remove duplicate triplets automatically
@@ -45,4 +46,5 @@ public class ThreeSum {
         }
         return res;
     }
+
 }

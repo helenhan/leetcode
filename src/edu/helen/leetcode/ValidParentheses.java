@@ -10,11 +10,8 @@ public class ValidParentheses {
 			if(c=='(') stack.push(')');
 			else if(c=='[') stack.push(']');
 			else if(c=='{') stack.push('}');
-			else if(stack.empty()||stack.pop()!=c) return false; //do not forget to check stack.empty()
+			else if(stack.empty()||stack.pop()!=c) return false; //do not forget to check stack.empty()   // the number of right parentheses less than left ones
 		}
-		return stack.empty();
+		return stack.empty(); //the number of left parentheses is bigger than right ones.
 	}
-
-
-
 }
