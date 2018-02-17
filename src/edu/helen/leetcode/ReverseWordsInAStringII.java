@@ -17,20 +17,21 @@ import java.util.Arrays;
  */
 public class ReverseWordsInAStringII {
 
-    public void reverseWords(char[] s) {
-        if (s == null || s.length == 0) {
+    public void reverseWords(char[] str) {
+        if (str == null || str.length == 0) {
             return;
         }
         //reverse each word
         int left=0;
-        for (int i = 0; i <=s.length; i++) { // note this i < = s.length, just for the last word
-            if (i == s.length || s[i] == ' ') { //Note i==s.length
-                reverse(s,left,i-1);
+        for (int i = 0; i <=str.length; i++) { // note this i < = str.length, just for the last word
+            if (i == str.length || str[i] == ' ') { //Note i==str.length
+                reverse(str,left,i-1);
                 left = i+1;
             }
         }
         // reverse the whole string
-        reverse(s,0,s.length-1);
+        reverse(str,0,str.length-1);
+
     }
     private void reverse(char[] s,int left,int right){
         while(left<right){

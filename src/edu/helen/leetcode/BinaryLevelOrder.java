@@ -53,5 +53,4 @@ public class BinaryLevelOrder {
         dfs(node.right, list, height + 1);
     }
 
-
 }

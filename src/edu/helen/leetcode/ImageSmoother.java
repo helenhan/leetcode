@@ -27,5 +27,4 @@ public class ImageSmoother {
         }
         return res;
     }
-
 }

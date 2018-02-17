@@ -29,4 +29,9 @@ public class ValidPalindrome {
         }
         return true;
     }
+
+    public static void main(String[] args) {
+        ValidPalindrome vp = new ValidPalindrome();
+        System.out.println(vp.isPalindrome("0P"));
+    }
 }

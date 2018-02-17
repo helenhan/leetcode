@@ -11,6 +11,6 @@ public class ComplexNumberMultiply {
         int aImg = Integer.parseInt(x[1]);
         int bReal = Integer.parseInt(y[0]);
         int bImg = Integer.parseInt(y[1]);
-        return aReal*bReal-aImg*bImg +"+" + (aReal*bImg+aImg*bReal)+"i";
+        return aReal * bReal - aImg * bImg + "+" + (aReal * bImg + aImg * bReal) + "i";
     }
 }

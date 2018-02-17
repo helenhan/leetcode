@@ -1,8 +1,6 @@
 package edu.helen.leetcode;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * https://discuss.leetcode.com/topic/29303/two-end-bfs-in-java-31ms
@@ -30,12 +28,46 @@ import java.util.Set;
  */
 public class WordLadder {
 
-    //BFS， two-end method
-//traverse the path simultaneously from start node and end node, and merge in the middle
-//the speed will increase (logN/2)^2 times compared with one-end method
+    //bfs
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        Set<String > wordSet = new HashSet<>(wordList);
-        if (beginWord == null || endWord == null || wordList == null || wordList.size() == 0||!wordSet.contains(endWord)) {
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(beginWord);
+        int level = 1;
+        Set<String> set = new HashSet<>(); // need HashSet otherwise time limit exceeds.
+        for (String s : wordList) {
+            set.add(s);
+        }
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                String s = queue.poll();
+                if (s.equals(endWord)) return level;
+                char[] chars = s.toCharArray();
+                for (int x = 0; x < s.length(); x++) {
+                    for (char y = 'a'; y <= 'z'; y++) {
+                        char old = chars[x];
+                        chars[x] = y;
+                        String newStr = new String(chars);
+                        if (set.remove(newStr)) {
+                            queue.offer(newStr);
+                        }
+                        chars[x] = old;
+                    }
+                }
+
+            }
+            level++;
+            if (queue.size() == 0) return 0;
+        }
+        return 0;
+    }
+
+    //BFS， two-end method
+    //traverse the path simultaneously from start node and end node, and merge in the middle
+    //the speed will increase (logN/2)^2 times compared with one-end method
+    public int ladderLength2(String beginWord, String endWord, List<String> wordList) {
+        Set<String> wordSet = new HashSet<>(wordList);
+        if (beginWord == null || endWord == null || wordList == null || wordList.size() == 0 || !wordSet.contains(endWord)) {
             return 0;
         }
         int len = 1; // beginWord is the first one and not included in wordList.

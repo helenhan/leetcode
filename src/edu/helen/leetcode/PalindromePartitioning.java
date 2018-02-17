@@ -24,7 +24,7 @@ public class PalindromePartitioning {
     }
 
     private void helper(List<List<String>> res, List<String> list, String s, int start) {
-        if (start == s.length()) {
+        if (start == s.length()) { // NOTE:it's length not length-1
             res.add(new ArrayList<>(list));
         } else {
             for (int i = start; i < s.length(); i++) {

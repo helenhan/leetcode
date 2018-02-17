@@ -1,6 +1,7 @@
 package edu.helen.leetcode;
 
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Helen on 2/6/2017.
@@ -51,8 +52,7 @@ public class LRUCache {
         return res;
     }
 
-    private Hashtable<Integer, DLinkedNode>
-            cache = new Hashtable<>();
+    private Map<Integer, DLinkedNode> cache = new HashMap<>();
     private int count;
     private int capacity;
     private DLinkedNode head, tail;
@@ -112,6 +112,7 @@ public class LRUCache {
         }
 
     }
+
 
 }
 

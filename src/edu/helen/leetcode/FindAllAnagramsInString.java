@@ -1,6 +1,7 @@
 package edu.helen.leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -25,21 +26,52 @@ public class FindAllAnagramsInString {
         for (char c : p.toCharArray()) {
             map[c]++;
         }
-        int right = 0;
+        int high = 0;
         int left = 0;
         int count = p.length();
-        while (right < s.length()) {
-            if (map[s.charAt(right++)]-- >= 1) {
+        while (high < s.length()) {
+            if (map[s.charAt(high++)]-- >= 1) {
                 count--;
             }
             if (count == 0) {
                 res.add(left);
             }
-            if (right - left == p.length() && map[s.charAt(left++)]++ >= 0) {
+            if (high - left == p.length() && map[s.charAt(left++)]++ >= 0) { //because for char[left] has been minus one when moving high index
                 count++;
             }
         }
         return res;
+    }
+
+    //time limit exceed
+    public List<Integer> findAnagrams2(String s, String p) {
+        List<Integer> res = new ArrayList<>();
+        if (s == null || s.length() == 0 || p == null || p.length() == 0 || s.length() < p.length()) {
+            return res;
+        }
+        int n = s.length();
+        int m = p.length();
+        for (int i = 0; i < n; i++) {
+            if (i + m - 1 < n && isValid(s.substring(i, i + m), p)) {
+                res.add(i);
+            }
+        }
+        return res;
+    }
+
+    private boolean isValid(String subStr, String p) {
+        char[] sArray = subStr.toCharArray();
+        char[] pArray = p.toCharArray();
+        Arrays.sort(sArray);
+        Arrays.sort(pArray);
+        return Arrays.toString(sArray).equals(Arrays.toString(pArray));
+
+    }
+
+
+    public static void main(String[] args) {
+        FindAllAnagramsInString fa = new FindAllAnagramsInString();
+        System.out.println(Arrays.toString(fa.findAnagrams2("cbaebabacd", "abc").toArray()));
     }
 
 }

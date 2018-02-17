@@ -58,7 +58,7 @@ public class SubSets {
 
     public static void main(String[] args) {
         SubSets ss = new SubSets();
-        ss.subsets2(new int[]{1, 2, 3});
+        ss.subsets(new int[]{1, 2, 3});
     }
 
 

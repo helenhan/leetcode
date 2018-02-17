@@ -2,7 +2,6 @@ package edu.helen.leetcode;
 
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Stack;
 
 public class MinStack {
 
@@ -51,19 +50,18 @@ public class MinStack {
 //    }
 
 
-//    Two stacks.
-    Deque<Integer> stack;
-    Deque<Integer> minStack;
+//    Two stacks
+
+    Deque<Integer> stack = new LinkedList<>();
+    Deque<Integer> minStack = new LinkedList<>();
 
     public MinStack() {
-        stack = new LinkedList<>();
-        minStack = new LinkedList<>();
+
     }
 
     public void push(int x) {
-        if (minStack.isEmpty() || minStack.peek() >= x) {
+        if (minStack.isEmpty() || x <= minStack.peek()) { // must be x<= not x<
             minStack.push(x);
-
         }
         stack.push(x);
     }
@@ -72,12 +70,10 @@ public class MinStack {
         if (stack.isEmpty()) {
             return;
         }
-//        int x = stack.pop();
-        if (minStack.peek().equals(stack.peek())) { //notice can't use minStack.peek() directly.
+        int num = stack.pop();
+        if (minStack.peek() == num) {
             minStack.pop();
         }
-        stack.pop();
-
     }
 
     public int top() {
@@ -90,10 +86,10 @@ public class MinStack {
 
     public static void main(String[] args) {
         MinStack stack = new MinStack();
-        stack.push(512);
-        stack.push(-1024);
-        stack.push(-1024);
-        stack.push(512);
+        stack.push(-2);
+        stack.push(0);
+        stack.push(-3);
+        stack.push(-3);
         stack.pop();
         System.out.println(stack.getMin());
         stack.pop();
@@ -102,7 +98,6 @@ public class MinStack {
         System.out.println(stack.getMin());
 
     }
-
 
 
 }

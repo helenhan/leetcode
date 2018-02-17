@@ -6,8 +6,8 @@ package edu.helen.leetcode;
  * every visited node should be set as '0' to mark as visited node. Count the number of root nodes that trigger DFS,
  * this number would be the number of islands since each DFS starting at some root identifies an island.
  * <p>
- * Time complexity : O(M \times N)O(M×N) where MM is the number of rows and NN is the number of columns.
- * Space complexity : worst case O(M \times N)O(M×N) in case that the grid map is filled with lands where DFS goes by M \times NM×N deep.
+ * Time complexity : OO(M×N) where M is the number of rows and N is the number of columns.
+ * Space complexity : worst case O(M×N) in case that the grid map is filled with lands where DFS goes by M×N deep.
  * <p>
  * https://leetcode.com/problems/number-of-islands/solution/
  * Created by Helen on 10/11/2017.

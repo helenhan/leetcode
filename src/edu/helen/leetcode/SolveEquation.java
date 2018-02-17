@@ -31,5 +31,4 @@ public class SolveEquation {
         return res;
     }
 
-
 }

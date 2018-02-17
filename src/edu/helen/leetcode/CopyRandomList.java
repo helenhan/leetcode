@@ -57,6 +57,13 @@ public class CopyRandomList {
         return newHead;
     }
 
+
+    public static void main(String[] args) {
+         CopyRandomList crl = new CopyRandomList();
+        RandomListNode l1 = new RandomListNode(-1);
+        RandomListNode l2 = new RandomListNode(1);
+    }
+
     //use HashMap
     public RandomListNode copyRandomList2(RandomListNode head) {
         Map<RandomListNode, RandomListNode> map = new HashMap<>();

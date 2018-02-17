@@ -26,5 +26,4 @@ public class LowestAncestorBT {
                                                 //because the leaf node's children nodes are null (root==null)
         }
     }
-
 }

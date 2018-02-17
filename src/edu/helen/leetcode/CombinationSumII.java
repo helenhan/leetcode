@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Helen on 12/6/2017.
  */
 public class CombinationSumII {
-    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(candidates); // must be sorted first since we need to remove duplicates later
         helper(res, new ArrayList<>(), candidates, target, 0);

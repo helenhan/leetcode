@@ -5,10 +5,6 @@ import java.util.List;
 
 public class BinaryTreeZigzagLevelOrder {
 
-	public BinaryTreeZigzagLevelOrder() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
 		List<List<Integer>> list = new LinkedList<List<Integer>>();
 		helper(root, list, 0);

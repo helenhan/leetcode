@@ -2,6 +2,7 @@ package edu.helen.leetcode;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * https://aaronice.gitbooks.io/lintcode/content/data_structure/sliding_window_maximum.html
@@ -42,5 +43,10 @@ public class MaxSlidingWindow {
         if (deque.peekFirst() == num) {
             deque.pollFirst();//this means the first element in deque is 'num' which will be out from deque.
         }
+    }
+
+    public static void main(String[] args) {
+        MaxSlidingWindow msw = new MaxSlidingWindow();
+        msw.maxSlidingWindow(new int[]{1,3,1,2,0,5},3);
     }
 }

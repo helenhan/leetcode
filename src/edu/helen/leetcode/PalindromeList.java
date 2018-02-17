@@ -3,7 +3,7 @@ package edu.helen.leetcode;
 public class PalindromeList {
 
     public boolean isPalindrome(ListNode head) {
-        if(head==null||head.next==null){
+        if (head == null || head.next == null) {
             return true;
         }
         ListNode fast = head;
@@ -17,7 +17,7 @@ public class PalindromeList {
         }
         slow = reverse(slow);
         fast = head;
-        while (slow!= null) { // not need check fast and slow both, since they are the same length
+        while (slow != null) { // not need check fast, since fast.next still points to slow if there are two nodes totally
             if (fast.val != slow.val) {
                 return false;
             }
@@ -39,5 +39,13 @@ public class PalindromeList {
         }
         return prev;
     }
-    
+
+    public static void main(String[] args) {
+        PalindromeList list = new PalindromeList();
+        ListNode node1 = new ListNode(0);
+        ListNode node2 = new ListNode(0);
+        node1.next = node2;
+        list.isPalindrome(node1);
+    }
+
 }

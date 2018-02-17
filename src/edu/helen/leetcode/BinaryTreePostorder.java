@@ -37,7 +37,6 @@ public class BinaryTreePostorder {
     public List<Integer> postorderTraversal2(TreeNode root) {
         List<Integer> list = new LinkedList<Integer>();
         Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
-        // Deque<TreeNode> rstack = new ArrayDeque<TreeNode>();
         TreeNode node = root, prev = root;
         if (root == null) {
             return list;

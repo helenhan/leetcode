@@ -46,6 +46,4 @@ public class SerializeDeserializeBinaryTree {
             return node;
         }
     }
-
-
 }

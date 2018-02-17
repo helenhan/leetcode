@@ -1,5 +1,7 @@
 package edu.helen.leetcode;
 
+import java.util.Arrays;
+
 /**
  * Created by Helen on 11/23/2017.
  */
@@ -23,8 +25,8 @@ public class SetMismatch {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 2, 4, 5};
+        int[] nums = new int[]{3,2,2};
         SetMismatch main = new SetMismatch();
-        main.findErrorNums(nums);
+        System.out.println(Arrays.toString(main.findErrorNums(nums)));
     }
 }

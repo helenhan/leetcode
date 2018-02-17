@@ -51,12 +51,16 @@ import java.util.Map;
  */
 public class EqualTreePartition {
     public boolean checkEqualTree(TreeNode root) {
-        if (root == null) return true;
+        if (root == null) {
+            return false;
+        }
         Map<Integer, Integer> map = new HashMap<>();
         int sum = sum(root, map);
         if (sum == 0) {
             if (map.get(0) > 1) {
                 return true;
+            } else {
+                return false;
             }
         }
         if (sum % 2 == 0 && map.containsKey(sum / 2)) {
@@ -66,12 +70,15 @@ public class EqualTreePartition {
         }
     }
 
-    public int sum(TreeNode root, Map<Integer, Integer> map) {
-        if (root == null) return 0;
+    private int sum(TreeNode root, Map<Integer, Integer> map) {
+        if (root == null) {
+            return 0;
+        }
         int value = root.val + sum(root.left, map) + sum(root.right, map);
         map.put(value, map.getOrDefault(value, 0) + 1);
         return value;
     }
+
 
     public static void main(String[] args) {
 

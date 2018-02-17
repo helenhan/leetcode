@@ -21,4 +21,5 @@ public class EncodeDecodeTinyURL {
     public String decode(String shortUrl) {
         return map.get(Integer.parseInt(shortUrl.replace(url,"")));
     }
+
 }

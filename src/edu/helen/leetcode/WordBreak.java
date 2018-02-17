@@ -4,9 +4,9 @@ import java.util.List;
 
 /**
  * 一个DP问题
- * possible[i] = true      if  S[0,i]在dictionary里面
+ * possible[i] = true      if  S[0,i)在dictionary里面
  * <p>
- * possible[i] = true      if  possible[k] == true 并且 S[k+1,i]在dictionary里面， 0<k<i
+ * possible[i] = true      if  possible[k] == true 并且 S[k+1,i)在dictionary里面， 0<k<i
  * <p>
  * possible[i] = false     if  no such k exist.
  * <p>
@@ -26,5 +26,4 @@ public class WordBreak {
         }
         return f[s.length()];
     }
-
 }

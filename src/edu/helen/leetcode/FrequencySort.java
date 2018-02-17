@@ -28,11 +28,11 @@ public class FrequencySort {
             }
         }
         StringBuilder builder = new StringBuilder();
-        while(tree.size()>0){ // note: need to use while loop, since we need to get "key" by descending order
-            Map.Entry<Integer,List<Character>> entry = tree.pollLastEntry();
+        while (tree.size() > 0) { // note: need to use while loop, since we need to get "key" by descending order
+            Map.Entry<Integer, List<Character>> entry = tree.pollLastEntry();
             //for each character with the same occurrence, so it doesn't matter they have the same key
-            for(Character ch:entry.getValue()) {
-                builder.append(new String(new char[entry.getKey()]).replace('\0',ch)); //'\0' is initial default value for char type
+            for (Character ch : entry.getValue()) {
+                builder.append(new String(new char[entry.getKey()]).replace('\0', ch)); //'\0' is initial default value for char type
             }
         }
         return builder.toString();
@@ -40,7 +40,7 @@ public class FrequencySort {
 
     public static void main(String[] args) {
         FrequencySort sort = new FrequencySort();
-        sort.frequencySort("ccaa");
+        System.out.println(sort.frequencySort("abccbe"));
 
     }
 }

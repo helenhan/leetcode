@@ -25,7 +25,6 @@ public class CombinationSum {
     private void helper(List<List<Integer>> res, List<Integer> list, int[] nums, int target, int index) {
         if (target < 0) {
             return;
-
         } else if (target == 0) {
             res.add(new ArrayList<>(list));
         } else {
