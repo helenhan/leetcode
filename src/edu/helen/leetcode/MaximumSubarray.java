@@ -18,9 +18,6 @@ public class MaximumSubarray {
 
     //dp
     public int maxSubArray2(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
         int[] dp = new int[nums.length]; //dp[i] means the maximum subarray ending with A[i];
         dp[0] = nums[0];
         int max = dp[0];

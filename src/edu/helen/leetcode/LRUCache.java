@@ -85,7 +85,7 @@ public class LRUCache {
     }
 
 
-    public void set(int key, int value) {
+    public void put(int key, int value) {
         DLinkedNode node = cache.get(key);
 
         if(node == null){

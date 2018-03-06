@@ -39,7 +39,8 @@ public class LongestIncreasingSubsequence {
         int[] dp = new int[nums.length];
         int len = 0;
         for (int num : nums) {
-            int i = Arrays.binarySearch(dp, 0, len, num); //Arrays.binarySearch() method returns index of the search key, if it is contained in the array, else it returns (-(insertion point) - 1). The insertion point is the point at which the key would be inserted into the array:
+            int i = Arrays.binarySearch(dp, 0, len, num); //Arrays.binarySearch() method returns index of the search key,
+            // if it is contained in the array, else it returns (-(insertion point) - 1). The insertion point is the point at which the key would be inserted into the array:
             if (i < 0) {
                 i = -(i + 1);
             }

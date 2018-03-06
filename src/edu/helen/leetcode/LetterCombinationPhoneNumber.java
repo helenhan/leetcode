@@ -1,5 +1,6 @@
 package edu.helen.leetcode;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -29,5 +30,35 @@ public class LetterCombinationPhoneNumber {
         }
         return list;
     }
+
+    /**
+     * https://leetcode.com/problems/letter-combinations-of-a-phone-number/discuss/8109/My-recursive-solution-using-Java
+     */
+    private static final String[] KEYS = { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+    public List<String> letterCombinations2(String digits) {
+        List<String> res = new ArrayList<>();
+        if (digits == null || digits.length() == 0) return res;
+        combination("",digits,0,res);
+        return res;
+    }
+
+    private void combination(String prefix, String digits, int level,List<String> res) {
+        if (level >= digits.length()) {
+            res.add(prefix);
+            return;
+        } else {
+            String str = KEYS[digits.charAt(level) - '0'];
+            for (int i = 0; i < str.length(); i++) {
+                combination(prefix+str.charAt(i),digits,level+1,res);
+            }
+        }
+
+    }
+
+    public static void main(String[] args) {
+        LetterCombinationPhoneNumber lc = new LetterCombinationPhoneNumber();
+        lc.letterCombinations2("23");
+    }
+
 
 }

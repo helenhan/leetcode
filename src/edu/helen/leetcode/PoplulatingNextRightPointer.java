@@ -5,19 +5,18 @@ package edu.helen.leetcode;
  */
 public class PoplulatingNextRightPointer {
     public void connect(TreeLinkNode root) {
-        if(root==null){
+        if (root == null) {
             return;
         }
-        TreeLinkNode curr = root;
-        TreeLinkNode leftMost = null;
-        while(curr.left!=null){
-            leftMost = curr.left;
+        TreeLinkNode levelStart = root;
+        while(levelStart!=null){
+            TreeLinkNode curr = levelStart;
             while(curr!=null){
-                curr.left.next = curr.right;
-                curr.right.next = curr.next==null?null:curr.next.left;
+                if(curr.left!=null) curr.left.next = curr.right;
+                if(curr.right!=null&&curr.next!=null) curr.right.next = curr.next.left;
                 curr = curr.next;
             }
-            curr = leftMost;
+            levelStart = levelStart.left;
         }
     }
 }
